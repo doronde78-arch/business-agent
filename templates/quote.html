@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ doc_type }} {{ doc_number }}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Heebo', Arial, sans-serif;
+      direction: rtl;
+      color: #1a1a2e;
+      background: #f8f9fa;
+      padding: 40px 20px;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .business-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .business-details {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+
+    .doc-badge {
+      text-align: left;
+    }
+
+    .doc-type-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    .doc-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: #e94560;
+      line-height: 1.2;
+    }
+
+    /* Meta strip */
+    .meta-strip {
+      background: #f0f4ff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 48px;
+      display: flex;
+      gap: 48px;
+    }
+
+    .meta-item label {
+      font-size: 11px;
+      color: #8a8fa8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .meta-item span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    /* Body */
+    .body {
+      padding: 40px 48px;
+    }
+
+    .client-section {
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      color: #8a8fa8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .client-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .client-email {
+      font-size: 13px;
+      color: #5a6a8a;
+      margin-top: 2px;
+    }
+
+    /* Items table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    thead th {
+      padding: 12px 16px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    thead th.num { text-align: center; }
+    thead th.money { text-align: left; }
+
+    tbody tr:nth-child(even) { background: #f8f9fc; }
+    tbody tr:hover { background: #eef2ff; }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e8ecf4;
+      vertical-align: middle;
+    }
+
+    td.num { text-align: center; color: #5a6a8a; }
+    td.money { text-align: left; font-variant-numeric: tabular-nums; }
+
+    /* Totals */
+    .totals {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .totals-table {
+      min-width: 300px;
+    }
+
+    .totals-table td {
+      padding: 6px 16px;
+      font-size: 14px;
+    }
+
+    .totals-table .label { color: #5a6a8a; }
+    .totals-table .value { text-align: left; font-variant-numeric: tabular-nums; }
+
+    .total-row {
+      border-top: 2px solid #1a1a2e;
+      font-weight: 700;
+      font-size: 16px;
+      color: #1a1a2e;
+    }
+
+    .total-row td { padding-top: 12px !important; }
+
+    .grand-amount {
+      color: #e94560;
+      font-size: 20px;
+    }
+
+    /* Notes */
+    .notes {
+      background: #f0f4ff;
+      border-right: 4px solid #0f3460;
+      border-radius: 4px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .notes-label {
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 20px 48px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .validity-notice {
+      display: inline-block;
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #664d03;
+      margin-bottom: 32px;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="header">
+      <div>
+        <div class="business-name">{{ business_name }}</div>
+        <div class="business-details">
+          {% if business_address %}{{ business_address }}<br>{% endif %}
+          {% if business_phone %}טל: {{ business_phone }}<br>{% endif %}
+          {% if business_email %}{{ business_email }}<br>{% endif %}
+          {% if business_tax_id %}ע.מ. {{ business_tax_id }}{% endif %}
+        </div>
+      </div>
+      <div class="doc-badge">
+        <div class="doc-type-label">{{ doc_type }}</div>
+        <div class="doc-number">{{ doc_number }}</div>
+      </div>
+    </div>
+
+    <div class="meta-strip">
+      <div class="meta-item">
+        <label>תאריך הנפקה</label>
+        <span>{{ doc_date }}</span>
+      </div>
+      <div class="meta-item">
+        <label>בתוקף עד</label>
+        <span>{{ valid_until }}</span>
+      </div>
+    </div>
+
+    <div class="body">
+
+      <div class="client-section">
+        <div class="section-label">לכבוד</div>
+        <div class="client-name">{{ client_name }}</div>
+        {% if client_email %}<div class="client-email">{{ client_email }}</div>{% endif %}
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>תיאור</th>
+            <th class="num">כמות</th>
+            <th class="money">מחיר יחידה</th>
+            <th class="money">סה"כ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.description }}</td>
+            <td class="num">{{ item.quantity | int if item.quantity == item.quantity | int else item.quantity }}</td>
+            <td class="money">{{ currency }}{{ item.unit_price | fmt }}</td>
+            <td class="money">{{ currency }}{{ item.line_total | fmt }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="totals">
+        <table class="totals-table">
+          <tr>
+            <td class="label">סכום לפני מע"מ</td>
+            <td class="value">{{ currency }}{{ subtotal | fmt }}</td>
+          </tr>
+          <tr>
+            <td class="label">מע"מ ({{ vat_rate_pct }}%)</td>
+            <td class="value">{{ currency }}{{ vat | fmt }}</td>
+          </tr>
+          <tr class="total-row">
+            <td class="label">סה"כ לתשלום</td>
+            <td class="value grand-amount">{{ currency }}{{ grand_total | fmt }}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="validity-notice">
+        ⏱ הצעה זו בתוקף עד <strong>{{ valid_until }}</strong>
+      </div>
+
+      {% if notes %}
+      <div class="notes">
+        <div class="notes-label">הערות:</div>
+        {{ notes }}
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="footer">
+      {{ business_name }}
+      {% if business_tax_id %} | ע.מ. {{ business_tax_id }}{% endif %}
+      {% if business_phone %} | {{ business_phone }}{% endif %}
+      {% if business_email %} | {{ business_email }}{% endif %}
+    </div>
+
+  </div>
+</body>
+</html>
